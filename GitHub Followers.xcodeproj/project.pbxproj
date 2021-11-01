@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED0741AD273097E800335105 /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0741AC273097E800335105 /* GFButton.swift */; };
+		ED0741AF27309EDE00335105 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0741AE27309EDE00335105 /* GFTextField.swift */; };
 		EDB7FA7D2730228B00230D47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA7C2730228B00230D47 /* AppDelegate.swift */; };
 		EDB7FA7F2730228B00230D47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA7E2730228B00230D47 /* SceneDelegate.swift */; };
 		EDB7FA812730228B00230D47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA802730228B00230D47 /* ViewController.swift */; };
 		EDB7FA862730228D00230D47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDB7FA852730228D00230D47 /* Assets.xcassets */; };
 		EDB7FA892730228D00230D47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDB7FA872730228D00230D47 /* LaunchScreen.storyboard */; };
+		EDB7FA912730455800230D47 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA902730455800230D47 /* SearchVC.swift */; };
+		EDB7FA932730457F00230D47 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA922730457F00230D47 /* FavoritesVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED0741AC273097E800335105 /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
+		ED0741AE27309EDE00335105 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 		EDB7FA792730228B00230D47 /* GitHub Followers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHub Followers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDB7FA7C2730228B00230D47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDB7FA7E2730228B00230D47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -22,6 +28,8 @@
 		EDB7FA852730228D00230D47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDB7FA882730228D00230D47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDB7FA8A2730228D00230D47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDB7FA902730455800230D47 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		EDB7FA922730457F00230D47 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,10 @@
 				EDB7FA852730228D00230D47 /* Assets.xcassets */,
 				EDB7FA872730228D00230D47 /* LaunchScreen.storyboard */,
 				EDB7FA8A2730228D00230D47 /* Info.plist */,
+				EDB7FA902730455800230D47 /* SearchVC.swift */,
+				EDB7FA922730457F00230D47 /* FavoritesVC.swift */,
+				ED0741AC273097E800335105 /* GFButton.swift */,
+				ED0741AE27309EDE00335105 /* GFTextField.swift */,
 			);
 			path = "GitHub Followers";
 			sourceTree = "<group>";
@@ -134,9 +146,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDB7FA932730457F00230D47 /* FavoritesVC.swift in Sources */,
+				EDB7FA912730455800230D47 /* SearchVC.swift in Sources */,
+				ED0741AD273097E800335105 /* GFButton.swift in Sources */,
 				EDB7FA812730228B00230D47 /* ViewController.swift in Sources */,
 				EDB7FA7D2730228B00230D47 /* AppDelegate.swift in Sources */,
 				EDB7FA7F2730228B00230D47 /* SceneDelegate.swift in Sources */,
+				ED0741AF27309EDE00335105 /* GFTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
