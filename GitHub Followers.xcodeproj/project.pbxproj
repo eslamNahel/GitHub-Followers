@@ -14,6 +14,8 @@
 		ED0741B52730C70D00335105 /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0741B42730C70D00335105 /* GFBodyLabel.swift */; };
 		ED0741B72730C91F00335105 /* GFAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0741B62730C91F00335105 /* GFAlertVC.swift */; };
 		ED0741B927317B2800335105 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0741B827317B2800335105 /* UIViewController+Ext.swift */; };
+		ED0741C12731D4B600335105 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0741C02731D4B600335105 /* Follower.swift */; };
+		ED0741C32731D4BC00335105 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0741C22731D4BC00335105 /* User.swift */; };
 		EDB7FA7D2730228B00230D47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA7C2730228B00230D47 /* AppDelegate.swift */; };
 		EDB7FA7F2730228B00230D47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA7E2730228B00230D47 /* SceneDelegate.swift */; };
 		EDB7FA862730228D00230D47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDB7FA852730228D00230D47 /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 		ED0741B42730C70D00335105 /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
 		ED0741B62730C91F00335105 /* GFAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertVC.swift; sourceTree = "<group>"; };
 		ED0741B827317B2800335105 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		ED0741C02731D4B600335105 /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
+		ED0741C22731D4BC00335105 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EDB7FA792730228B00230D47 /* GitHub Followers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHub Followers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDB7FA7C2730228B00230D47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDB7FA7E2730228B00230D47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +104,15 @@
 			path = "App Delegates";
 			sourceTree = "<group>";
 		};
+		ED0741BF2731D4A100335105 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED0741C02731D4B600335105 /* Follower.swift */,
+				ED0741C22731D4BC00335105 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		EDB7FA702730228B00230D47 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +132,7 @@
 		EDB7FA7B2730228B00230D47 /* GitHub Followers */ = {
 			isa = PBXGroup;
 			children = (
+				ED0741BF2731D4A100335105 /* Models */,
 				ED0741BE273180F200335105 /* App Delegates */,
 				ED0741BD273180E800335105 /* Resources */,
 				ED0741BC273180E100335105 /* Extensions */,
@@ -198,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED0741C32731D4BC00335105 /* User.swift in Sources */,
 				EDB7FA932730457F00230D47 /* FavoritesVC.swift in Sources */,
 				EDB7FA912730455800230D47 /* SearchVC.swift in Sources */,
 				ED0741B927317B2800335105 /* UIViewController+Ext.swift in Sources */,
@@ -205,6 +220,7 @@
 				ED0741AD273097E800335105 /* GFButton.swift in Sources */,
 				ED0741B72730C91F00335105 /* GFAlertVC.swift in Sources */,
 				EDB7FA7D2730228B00230D47 /* AppDelegate.swift in Sources */,
+				ED0741C12731D4B600335105 /* Follower.swift in Sources */,
 				ED0741B32730C67800335105 /* GFTitleLabel.swift in Sources */,
 				EDB7FA7F2730228B00230D47 /* SceneDelegate.swift in Sources */,
 				ED0741AF27309EDE00335105 /* GFTextField.swift in Sources */,
