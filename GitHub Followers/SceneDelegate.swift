@@ -19,6 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = scene
         window?.rootViewController = createTabBar()
         window?.makeKeyAndVisible()
+        
+        configureNavBar()
     }
     
     
@@ -49,6 +51,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         return tabBar
     }
+    
+    
+    func configureNavBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.shadowColor = .clear
+        let backButton = UINavigationBar.appearance()
+        backButton.tintColor = .systemGreen
+        backButton.standardAppearance = appearance
+        backButton.scrollEdgeAppearance = appearance
+    }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

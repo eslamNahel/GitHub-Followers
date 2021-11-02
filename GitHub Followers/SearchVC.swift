@@ -14,6 +14,7 @@ class SearchVC: UIViewController {
     let userNameTextField = GFTextField()
     let CTAButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
 
+    var isUserNameEntered: Bool { return !userNameTextField.text!.isEmpty}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class SearchVC: UIViewController {
         configureLogoImageView()
         configureUserNameTextField()
         configureCTAButton()
+        createDismissKeyboardGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,7 +32,29 @@ class SearchVC: UIViewController {
     }
     
     
-    //MARK: - Configure Methods
+    //MARK: - Additional Methods
+    
+    private func createDismissKeyboardGesture() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+    }
+    
+    
+    @objc private func pushFollowersVC() {
+        guard isUserNameEntered else {
+            print("No username")
+            return
+        }
+        
+        let followersVC = FollowersListVC()
+        followersVC.userName = userNameTextField.text
+        followersVC.title = userNameTextField.text
+        
+        navigationController?.pushViewController(followersVC, animated: true)
+    }
+    
+    
+    //MARK: - Configure UI Methods
     
     private func configureLogoImageView() {
         view.addSubview(logoImageView)
@@ -48,6 +72,7 @@ class SearchVC: UIViewController {
     
     private func configureUserNameTextField() {
         view.addSubview(userNameTextField)
+        userNameTextField.delegate = self
         
         NSLayoutConstraint.activate([
             userNameTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
@@ -57,8 +82,10 @@ class SearchVC: UIViewController {
         ])
     }
     
+    
     private func configureCTAButton() {
         view.addSubview(CTAButton)
+        CTAButton.addTarget(self, action: #selector(pushFollowersVC), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             CTAButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
@@ -68,4 +95,15 @@ class SearchVC: UIViewController {
         ])
     }
 
+}
+
+
+//MARK: - Extensions
+
+extension SearchVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        pushFollowersVC()
+        createDismissKeyboardGesture()
+        return true
+    }
 }
