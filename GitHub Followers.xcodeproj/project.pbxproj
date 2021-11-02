@@ -16,7 +16,6 @@
 		ED0741B927317B2800335105 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0741B827317B2800335105 /* UIViewController+Ext.swift */; };
 		EDB7FA7D2730228B00230D47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA7C2730228B00230D47 /* AppDelegate.swift */; };
 		EDB7FA7F2730228B00230D47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA7E2730228B00230D47 /* SceneDelegate.swift */; };
-		EDB7FA812730228B00230D47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA802730228B00230D47 /* ViewController.swift */; };
 		EDB7FA862730228D00230D47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDB7FA852730228D00230D47 /* Assets.xcassets */; };
 		EDB7FA892730228D00230D47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDB7FA872730228D00230D47 /* LaunchScreen.storyboard */; };
 		EDB7FA912730455800230D47 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA902730455800230D47 /* SearchVC.swift */; };
@@ -34,7 +33,6 @@
 		EDB7FA792730228B00230D47 /* GitHub Followers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHub Followers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDB7FA7C2730228B00230D47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDB7FA7E2730228B00230D47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EDB7FA802730228B00230D47 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EDB7FA852730228D00230D47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDB7FA882730228D00230D47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDB7FA8A2730228D00230D47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,6 +51,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED0741BA273180D200335105 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EDB7FA872730228D00230D47 /* LaunchScreen.storyboard */,
+				EDB7FA902730455800230D47 /* SearchVC.swift */,
+				ED0741B02730B42700335105 /* FollowersListVC.swift */,
+				EDB7FA922730457F00230D47 /* FavoritesVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		ED0741BB273180DC00335105 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ED0741AC273097E800335105 /* GFButton.swift */,
+				ED0741AE27309EDE00335105 /* GFTextField.swift */,
+				ED0741B22730C67800335105 /* GFTitleLabel.swift */,
+				ED0741B42730C70D00335105 /* GFBodyLabel.swift */,
+				ED0741B62730C91F00335105 /* GFAlertVC.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ED0741BC273180E100335105 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ED0741B827317B2800335105 /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ED0741BD273180E800335105 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EDB7FA852730228D00230D47 /* Assets.xcassets */,
+				EDB7FA8A2730228D00230D47 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		ED0741BE273180F200335105 /* App Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				EDB7FA7C2730228B00230D47 /* AppDelegate.swift */,
+				EDB7FA7E2730228B00230D47 /* SceneDelegate.swift */,
+			);
+			path = "App Delegates";
+			sourceTree = "<group>";
+		};
 		EDB7FA702730228B00230D47 = {
 			isa = PBXGroup;
 			children = (
@@ -72,21 +119,11 @@
 		EDB7FA7B2730228B00230D47 /* GitHub Followers */ = {
 			isa = PBXGroup;
 			children = (
-				ED0741B827317B2800335105 /* UIViewController+Ext.swift */,
-				EDB7FA7C2730228B00230D47 /* AppDelegate.swift */,
-				EDB7FA7E2730228B00230D47 /* SceneDelegate.swift */,
-				EDB7FA802730228B00230D47 /* ViewController.swift */,
-				EDB7FA852730228D00230D47 /* Assets.xcassets */,
-				EDB7FA872730228D00230D47 /* LaunchScreen.storyboard */,
-				EDB7FA8A2730228D00230D47 /* Info.plist */,
-				EDB7FA902730455800230D47 /* SearchVC.swift */,
-				ED0741B02730B42700335105 /* FollowersListVC.swift */,
-				EDB7FA922730457F00230D47 /* FavoritesVC.swift */,
-				ED0741AC273097E800335105 /* GFButton.swift */,
-				ED0741AE27309EDE00335105 /* GFTextField.swift */,
-				ED0741B22730C67800335105 /* GFTitleLabel.swift */,
-				ED0741B42730C70D00335105 /* GFBodyLabel.swift */,
-				ED0741B62730C91F00335105 /* GFAlertVC.swift */,
+				ED0741BE273180F200335105 /* App Delegates */,
+				ED0741BD273180E800335105 /* Resources */,
+				ED0741BC273180E100335105 /* Extensions */,
+				ED0741BB273180DC00335105 /* Views */,
+				ED0741BA273180D200335105 /* Controllers */,
 			);
 			path = "GitHub Followers";
 			sourceTree = "<group>";
@@ -166,7 +203,6 @@
 				ED0741B927317B2800335105 /* UIViewController+Ext.swift in Sources */,
 				ED0741B12730B42700335105 /* FollowersListVC.swift in Sources */,
 				ED0741AD273097E800335105 /* GFButton.swift in Sources */,
-				EDB7FA812730228B00230D47 /* ViewController.swift in Sources */,
 				ED0741B72730C91F00335105 /* GFAlertVC.swift in Sources */,
 				EDB7FA7D2730228B00230D47 /* AppDelegate.swift in Sources */,
 				ED0741B32730C67800335105 /* GFTitleLabel.swift in Sources */,
@@ -315,7 +351,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LRYD6ZJ8X6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "GitHub Followers/Info.plist";
+				INFOPLIST_FILE = "GitHub Followers/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -343,7 +379,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LRYD6ZJ8X6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "GitHub Followers/Info.plist";
+				INFOPLIST_FILE = "GitHub Followers/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
