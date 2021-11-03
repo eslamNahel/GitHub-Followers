@@ -56,11 +56,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func configureNavBar() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.shadowColor = .clear
-        let backButton = UINavigationBar.appearance()
-        backButton.tintColor = .systemGreen
-        backButton.standardAppearance = appearance
-        backButton.scrollEdgeAppearance = appearance
+        
+        appearance.shadowColor          = .clear
+        let backButton                  = UINavigationBar.appearance()
+        backButton.tintColor            = .systemGreen
+        backButton.standardAppearance   = appearance
+//        backButton.scrollEdgeAppearance = appearance
     }
     
 
