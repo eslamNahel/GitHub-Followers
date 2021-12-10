@@ -40,7 +40,4 @@ class GFTextField: UITextField {
         returnKeyType               = .go
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    
-
 }

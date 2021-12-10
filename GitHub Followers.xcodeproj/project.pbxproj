@@ -20,6 +20,7 @@
 		ED0741C92732E7E400335105 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0741C82732E7E400335105 /* ErrorMessage.swift */; };
 		ED0741CC273307B700335105 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0741CB273307B700335105 /* FollowerCell.swift */; };
 		ED0741CE2733087E00335105 /* GFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0741CD2733087E00335105 /* GFImageView.swift */; };
+		ED9F476C27637020001E2B0F /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F476B27637020001E2B0F /* UIHelper.swift */; };
 		EDB7FA7D2730228B00230D47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA7C2730228B00230D47 /* AppDelegate.swift */; };
 		EDB7FA7F2730228B00230D47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA7E2730228B00230D47 /* SceneDelegate.swift */; };
 		EDB7FA862730228D00230D47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDB7FA852730228D00230D47 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		ED0741C82732E7E400335105 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		ED0741CB273307B700335105 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		ED0741CD2733087E00335105 /* GFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFImageView.swift; sourceTree = "<group>"; };
+		ED9F476B27637020001E2B0F /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		EDB7FA792730228B00230D47 /* GitHub Followers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHub Followers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDB7FA7C2730228B00230D47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDB7FA7E2730228B00230D47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				ED0741C82732E7E400335105 /* ErrorMessage.swift */,
+				ED9F476B27637020001E2B0F /* UIHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				EDB7FA932730457F00230D47 /* FavoritesVC.swift in Sources */,
 				EDB7FA912730455800230D47 /* SearchVC.swift in Sources */,
 				ED0741B927317B2800335105 /* UIViewController+Ext.swift in Sources */,
+				ED9F476C27637020001E2B0F /* UIHelper.swift in Sources */,
 				ED0741B12730B42700335105 /* FollowersListVC.swift in Sources */,
 				ED0741AD273097E800335105 /* GFButton.swift in Sources */,
 				ED0741B72730C91F00335105 /* GFAlertVC.swift in Sources */,

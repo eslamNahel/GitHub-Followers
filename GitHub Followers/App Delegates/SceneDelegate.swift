@@ -61,7 +61,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let backButton                  = UINavigationBar.appearance()
         backButton.tintColor            = .systemGreen
         backButton.standardAppearance   = appearance
-//        backButton.scrollEdgeAppearance = appearance
     }
     
 
