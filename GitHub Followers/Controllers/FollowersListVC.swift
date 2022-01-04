@@ -16,9 +16,9 @@ class FollowersListVC: UIViewController {
     }
     
     var userName: String!
-    var followers = [Follower]()
-    var page = 1
-    var hasMoreFollowers = true
+    var followers           = [Follower]()
+    var page                = 1
+    var hasMoreFollowers    = true
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
@@ -28,6 +28,7 @@ class FollowersListVC: UIViewController {
         super.viewDidLoad()
         
         configureViewController()
+        configureSearchController()
         configureCollectionView()
         getFollowers(username: userName, page: page)
         configureDataSource()
@@ -40,7 +41,7 @@ class FollowersListVC: UIViewController {
     }
     
     
-    //MARK: - Configuration Methods
+    //MARK: - UI Configuration Methods
     
     private func configureViewController() {
         view.backgroundColor = .systemBackground
@@ -55,6 +56,15 @@ class FollowersListVC: UIViewController {
         collectionView.backgroundColor  = .systemBackground
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.resuseID)
     }
+    
+    
+    private func configureSearchController() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search for users"
+        navigationItem.searchController = searchController
+    }
+    
     
     //MARK: - Networking methods
     
@@ -85,6 +95,7 @@ class FollowersListVC: UIViewController {
         }
     }
     
+    
     //MARK: - Collection View data source methods
     
     func configureDataSource() {
@@ -107,16 +118,23 @@ class FollowersListVC: UIViewController {
 
 extension FollowersListVC: UICollectionViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let offSetY = scrollView.contentOffset.y
+        let offSetY = scrollView.contentOffset.y + 170
         let contentHeight = scrollView.contentSize.height
         let height = scrollView.frame.size.height
         
-        if offSetY > contentHeight - height {
+        if offSetY >= contentHeight - height {
             guard hasMoreFollowers else {
                 return
             }
             self.page += 1
             self.getFollowers(username: userName, page: page)
         }
+    }
+}
+
+
+extension FollowersListVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
     }
 }
