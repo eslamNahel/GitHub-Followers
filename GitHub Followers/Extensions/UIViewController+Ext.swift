@@ -10,11 +10,14 @@ import UIKit
 fileprivate var containerView: UIView!
 
 extension UIViewController {
+    
     func presentAlertOnMainThread(title: String, message: String, actionTitle: String) {
-        let alertVC = GFAlertVC(title: title, message: message, buttonTitle: actionTitle)
-        alertVC.modalPresentationStyle  = .overFullScreen
-        alertVC.modalTransitionStyle    = .crossDissolve
-        present(alertVC, animated: true)
+        DispatchQueue.main.async {
+            let alertVC = GFAlertVC(title: title, message: message, buttonTitle: actionTitle)
+            alertVC.modalPresentationStyle  = .overFullScreen
+            alertVC.modalTransitionStyle    = .crossDissolve
+            self.present(alertVC, animated: true)
+        }
     }
     
     
