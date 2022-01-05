@@ -17,6 +17,16 @@ class NetworkManager {
     
     func getFollowers(for username: String, page: Int, completion: @escaping (Result<[Follower], ErrorMessage>) -> Void) {
         let endPoint = baseURL + "\(username)/followers?per_page=100&page=\(page)"
+        getData(endPoint: endPoint, completion: completion)
+    }
+    
+    
+    func getUserInfo(for username: String, completion: @escaping (Result<User, ErrorMessage>) -> Void) {
+        let endPoint = baseURL + "\(username)"
+        getData(endPoint: endPoint, completion: completion)
+    }
+    
+    private func getData<T: Codable>(endPoint: String, completion: @escaping (Result<T, ErrorMessage>) -> Void) {
         
         guard let url = URL(string: endPoint) else {
             completion(.failure(.invalidUserName))
@@ -43,8 +53,8 @@ class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let followers = try decoder.decode([Follower].self, from: data)
-                completion(.success(followers))
+                let data = try decoder.decode(T.self, from: data)
+                completion(.success(data))
             } catch {
                 completion(.failure(.invalidData))
             }
