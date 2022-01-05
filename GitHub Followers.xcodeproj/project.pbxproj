@@ -21,6 +21,7 @@
 		ED0741CC273307B700335105 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0741CB273307B700335105 /* FollowerCell.swift */; };
 		ED0741CE2733087E00335105 /* GFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0741CD2733087E00335105 /* GFImageView.swift */; };
 		ED9DC50427846346005EB8C0 /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9DC50327846346005EB8C0 /* GFEmptyStateView.swift */; };
+		ED9DC50727861D96005EB8C0 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9DC50627861D96005EB8C0 /* UserInfoVC.swift */; };
 		ED9F476C27637020001E2B0F /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F476B27637020001E2B0F /* UIHelper.swift */; };
 		EDB7FA7D2730228B00230D47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA7C2730228B00230D47 /* AppDelegate.swift */; };
 		EDB7FA7F2730228B00230D47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA7E2730228B00230D47 /* SceneDelegate.swift */; };
@@ -45,6 +46,7 @@
 		ED0741CB273307B700335105 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		ED0741CD2733087E00335105 /* GFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFImageView.swift; sourceTree = "<group>"; };
 		ED9DC50327846346005EB8C0 /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
+		ED9DC50627861D96005EB8C0 /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		ED9F476B27637020001E2B0F /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		EDB7FA792730228B00230D47 /* GitHub Followers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHub Followers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDB7FA7C2730228B00230D47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				EDB7FA902730455800230D47 /* SearchVC.swift */,
 				ED0741B02730B42700335105 /* FollowersListVC.swift */,
 				EDB7FA922730457F00230D47 /* FavoritesVC.swift */,
+				ED9DC50627861D96005EB8C0 /* UserInfoVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				EDB7FA7F2730228B00230D47 /* SceneDelegate.swift in Sources */,
 				ED0741AF27309EDE00335105 /* GFTextField.swift in Sources */,
 				ED0741B52730C70D00335105 /* GFBodyLabel.swift in Sources */,
+				ED9DC50727861D96005EB8C0 /* UserInfoVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
