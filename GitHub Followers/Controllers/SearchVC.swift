@@ -15,7 +15,6 @@ class SearchVC: UIViewController {
     let CTAButton           = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
     
     var isUserNameEntered: Bool { return !userNameTextField.text!.isEmpty}
-    
     var buttonConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -26,7 +25,6 @@ class SearchVC: UIViewController {
         configureUserNameTextField()
         configureCTAButton()
         createDismissKeyboardGesture()
-        
         addNotificationCenterToKeyboard()
         
         self.view.layoutIfNeeded()
@@ -36,6 +34,13 @@ class SearchVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            self.userNameTextField.becomeFirstResponder()
+        }
     }
     
     
