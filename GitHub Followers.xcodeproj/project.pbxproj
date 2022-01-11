@@ -31,6 +31,7 @@
 		EDB7FA892730228D00230D47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDB7FA872730228D00230D47 /* LaunchScreen.storyboard */; };
 		EDB7FA912730455800230D47 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA902730455800230D47 /* SearchVC.swift */; };
 		EDB7FA932730457F00230D47 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB7FA922730457F00230D47 /* FavoritesVC.swift */; };
+		EDD296C2278DB66700FF2083 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD296C1278DB66700FF2083 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		EDB7FA8A2730228D00230D47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDB7FA902730455800230D47 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		EDB7FA922730457F00230D47 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
+		EDD296C1278DB66700FF2083 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			children = (
 				ED0741C82732E7E400335105 /* ErrorMessage.swift */,
 				ED9F476B27637020001E2B0F /* UIHelper.swift */,
+				EDD296C1278DB66700FF2083 /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				EDB7FA912730455800230D47 /* SearchVC.swift in Sources */,
 				ED0741B927317B2800335105 /* UIViewController+Ext.swift in Sources */,
 				ED9F476C27637020001E2B0F /* UIHelper.swift in Sources */,
+				EDD296C2278DB66700FF2083 /* Constants.swift in Sources */,
 				ED0741B12730B42700335105 /* FollowersListVC.swift in Sources */,
 				ED0741AD273097E800335105 /* GFButton.swift in Sources */,
 				ED0741B72730C91F00335105 /* GFAlertVC.swift in Sources */,
