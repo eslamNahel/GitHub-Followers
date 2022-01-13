@@ -16,6 +16,11 @@ class GFRepoItemVC: GFItemInfoVC {
     }
     
     
+    override func didTapOnActionButton() {
+        delegate?.didTapGetProfile()
+    }
+    
+    
     private func configureVCItems() {
         itemInfoViewOne.set(itemInfoType: .repo, count: user.publicRepos)
         itemInfoViewTwo.set(itemInfoType: .gists, count: user.publicGists)

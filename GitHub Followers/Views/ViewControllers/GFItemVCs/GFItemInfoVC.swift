@@ -17,6 +17,7 @@ class GFItemInfoVC: UIViewController {
     let constraintsPadding: CGFloat = 20
     
     var user: User!
+    weak var delegate: UserInfoVCDelegate?
     
     
     init(user: User) {
@@ -36,6 +37,9 @@ class GFItemInfoVC: UIViewController {
         addStackView()
         addActionButton()
     }
+    
+    
+    @objc func didTapOnActionButton() {}
     
     
     private func configureBackground() {
@@ -70,6 +74,7 @@ class GFItemInfoVC: UIViewController {
     
     private func addActionButton() {
         view.addSubview(actionButton)
+        actionButton.addTarget(self, action: #selector(didTapOnActionButton), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             actionButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -constraintsPadding),
