@@ -5,11 +5,13 @@
 //  Created by Eslam Nahel on 05/01/2022.
 //
 
+
 import UIKit
+import SafariServices
 
 protocol UserInfoVCDelegate: AnyObject {
-    func didTapGetFollowers()
-    func didTapGetProfile()
+    func didTapGetProfile(with user: User)
+    func didTapGetFollowers(with user: User)
 }
 
 class UserInfoVC: UIViewController {
@@ -135,11 +137,18 @@ class UserInfoVC: UIViewController {
 
 extension UserInfoVC: UserInfoVCDelegate {
     
-    func didTapGetFollowers() {
-        print("followers!")
+    func didTapGetProfile(with user: User) {
+        guard let url = URL(string: user.htmlUrl) else {
+            presentAlertOnMainThread(title: "Invalid URL!", message: "The url linked to this user is invalid.", actionTitle: "oki")
+            return
+        }
+        let safariVC = SFSafariViewController(url: url)
+        safariVC.preferredControlTintColor = .systemGreen
+        present(safariVC, animated: true)
     }
     
-    func didTapGetProfile() {
-        print("profile!")
+    
+    func didTapGetFollowers(with user: User) {
+        
     }
 }

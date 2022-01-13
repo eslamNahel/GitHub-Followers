@@ -17,7 +17,7 @@ class GFRepoItemVC: GFItemInfoVC {
     
     
     override func didTapOnActionButton() {
-        delegate?.didTapGetProfile()
+        delegate?.didTapGetProfile(with: user)
     }
     
     
