@@ -33,6 +33,8 @@ class UserInfoVC: UIViewController {
             case .success(let userInfo):
                 DispatchQueue.main.async {
                     self.addChildToContainer(childVC: GFUserInfoHeaderVC(user: userInfo), to: self.headerView)
+                    self.addChildToContainer(childVC: GFRepoItemVC(user: userInfo), to: self.itemViewOne)
+                    self.addChildToContainer(childVC: GFFollowerItemVC(user: userInfo), to: self.itemViewTwo)
                 }
             case .failure(let error):
                 self.presentAlertOnMainThread(title: "Something baaad happened!", message: error.rawValue, actionTitle: "Alrighty")
