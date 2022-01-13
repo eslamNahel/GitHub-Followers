@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol UserInfoVCDelegate: AnyObject {
+    func didTapGetFollowers()
+    func didTapGetProfile()
+}
+
 class UserInfoVC: UIViewController {
     
     let headerView                  = UIView()
@@ -34,10 +39,7 @@ class UserInfoVC: UIViewController {
             switch results {
             case .success(let userInfo):
                 DispatchQueue.main.async {
-                    self.addChildToContainer(childVC: GFUserInfoHeaderVC(user: userInfo), to: self.headerView)
-                    self.addChildToContainer(childVC: GFRepoItemVC(user: userInfo), to: self.itemViewOne)
-                    self.addChildToContainer(childVC: GFFollowerItemVC(user: userInfo), to: self.itemViewTwo)
-                    self.dateLabel.text = "On GitHub since: \(userInfo.createdAt.convertToUIFormat())"
+                    self.configureVCItems(with: userInfo)
                 }
             case .failure(let error):
                 self.presentAlertOnMainThread(title: "Something baaad happened!", message: error.rawValue, actionTitle: "Alrighty")
@@ -45,6 +47,19 @@ class UserInfoVC: UIViewController {
         }
     }
     
+    
+    private func configureVCItems(with userInfo: User) {
+        let repoView = GFRepoItemVC(user: userInfo)
+        repoView.delegate = self
+        
+        let followersView = GFFollowerItemVC(user: userInfo)
+        followersView.delegate = self
+        
+        self.addChildToContainer(childVC: GFUserInfoHeaderVC(user: userInfo), to: self.headerView)
+        self.addChildToContainer(childVC: repoView, to: self.itemViewOne)
+        self.addChildToContainer(childVC: followersView, to: self.itemViewTwo)
+        self.dateLabel.text = "On GitHub since: \(userInfo.createdAt.convertToUIFormat())"
+    }
     
     @objc func dismissVC() {
         dismiss(animated: true)
@@ -114,5 +129,17 @@ class UserInfoVC: UIViewController {
             dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constraintPadding),
             dateLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
+    }
+}
+
+
+extension UserInfoVC: UserInfoVCDelegate {
+    
+    func didTapGetFollowers() {
+        print("followers!")
+    }
+    
+    func didTapGetProfile() {
+        print("profile!")
     }
 }
