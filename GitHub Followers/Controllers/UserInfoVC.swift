@@ -12,6 +12,7 @@ class UserInfoVC: UIViewController {
     let headerView                  = UIView()
     let itemViewOne                 = UIView()
     let itemViewTwo                 = UIView()
+    let dateLabel                   = GFBodyLabel(textAlignment: .center)
     let constraintPadding: CGFloat  = 20
     
     var userName: String!
@@ -23,6 +24,7 @@ class UserInfoVC: UIViewController {
         addHeaderView()
         addItemViewOne()
         addItemViewTwo()
+        addDateLabel()
         getUserData()
     }
     
@@ -35,6 +37,7 @@ class UserInfoVC: UIViewController {
                     self.addChildToContainer(childVC: GFUserInfoHeaderVC(user: userInfo), to: self.headerView)
                     self.addChildToContainer(childVC: GFRepoItemVC(user: userInfo), to: self.itemViewOne)
                     self.addChildToContainer(childVC: GFFollowerItemVC(user: userInfo), to: self.itemViewTwo)
+                    self.dateLabel.text = "On GitHub since: \(userInfo.createdAt.convertToUIFormat())"
                 }
             case .failure(let error):
                 self.presentAlertOnMainThread(title: "Something baaad happened!", message: error.rawValue, actionTitle: "Alrighty")
@@ -98,6 +101,18 @@ class UserInfoVC: UIViewController {
             itemViewTwo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constraintPadding),
             itemViewTwo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constraintPadding),
             itemViewTwo.heightAnchor.constraint(equalToConstant: 140)
+        ])
+    }
+    
+    
+    private func addDateLabel() {
+        view.addSubview(dateLabel)
+        
+        NSLayoutConstraint.activate([
+            dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: constraintPadding),
+            dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constraintPadding),
+            dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constraintPadding),
+            dateLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
 }
