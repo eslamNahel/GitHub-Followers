@@ -7,8 +7,13 @@
 
 import UIKit
 
-class FollowersListVC: UIViewController {
+protocol FollowerListVCDelegate: AnyObject {
+    func didRequestFollowers(with username: String)
+}
 
+
+class FollowersListVC: UIViewController {
+    
     //MARK: - Properties
     
     enum Section {
@@ -50,7 +55,7 @@ class FollowersListVC: UIViewController {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles  = true
     }
-
+    
     
     private func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createFlowLayoutColumns(in: view))
@@ -148,6 +153,7 @@ extension FollowersListVC: UICollectionViewDelegate {
         let follower = followersArray[indexPath.item]
         
         let userInfoVC = UserInfoVC()
+        userInfoVC.delegate = self
         userInfoVC.userName = follower.login
         let navVC = UINavigationController(rootViewController: userInfoVC)
         present(navVC, animated: true)
@@ -174,6 +180,27 @@ extension FollowersListVC: UISearchResultsUpdating, UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         self.updateData(on: self.followers)
+    }
+}
+
+
+extension FollowersListVC: FollowerListVCDelegate {
+    
+    func didRequestFollowers(with username: String) {
+        self.userName = username
+        title = username
+        self.page = 1
+        self.followers.removeAll()
+        self.filteredFollowers.removeAll()
+        collectionView.scrollsToTop = true
+        collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        if isSearching {
+            navigationItem.searchController?.searchBar.text = ""
+            navigationItem.searchController?.isActive = false
+            navigationItem.searchController?.dismiss(animated: false)
+            isSearching = false
+        }
+        getFollowers(username: username, page: page)
     }
 }
 

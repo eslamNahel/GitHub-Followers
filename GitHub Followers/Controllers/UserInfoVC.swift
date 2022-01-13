@@ -7,7 +7,6 @@
 
 
 import UIKit
-import SafariServices
 
 protocol UserInfoVCDelegate: AnyObject {
     func didTapGetProfile(with user: User)
@@ -23,6 +22,7 @@ class UserInfoVC: UIViewController {
     let constraintPadding: CGFloat  = 20
     
     var userName: String!
+    weak var delegate: FollowerListVCDelegate?
 
     
     override func viewDidLoad() {
@@ -142,13 +142,16 @@ extension UserInfoVC: UserInfoVCDelegate {
             presentAlertOnMainThread(title: "Invalid URL!", message: "The url linked to this user is invalid.", actionTitle: "oki")
             return
         }
-        let safariVC = SFSafariViewController(url: url)
-        safariVC.preferredControlTintColor = .systemGreen
-        present(safariVC, animated: true)
+        presentSafariVC(with: url)
     }
     
     
     func didTapGetFollowers(with user: User) {
-        
+        guard user.followers > 0 else {
+            presentAlertOnMainThread(title: "No Followers", message: "This user has no followers ☹️", actionTitle: "oh ok")
+            return
+        }
+        delegate?.didRequestFollowers(with: user.login)
+        dismissVC()
     }
 }
