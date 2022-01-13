@@ -9,18 +9,25 @@ import UIKit
 
 class UserInfoVC: UIViewController {
     
-    let headerView = UIView()
+    let headerView                  = UIView()
+    let itemViewOne                 = UIView()
+    let itemViewTwo                 = UIView()
+    let constraintPadding: CGFloat  = 20
     
     var userName: String!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
-        navigationItem.rightBarButtonItem = doneButton
-
+        configureViewController()
         addHeaderView()
-        
+        addItemViewOne()
+        addItemViewTwo()
+        getUserData()
+    }
+    
+    
+    private func getUserData() {
         NetworkManager.shared.getUserInfo(for: userName) { results in
             switch results {
             case .success(let userInfo):
@@ -39,6 +46,13 @@ class UserInfoVC: UIViewController {
     }
     
     
+    private func configureViewController() {
+        view.backgroundColor = .systemBackground
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
+        navigationItem.rightBarButtonItem = doneButton
+    }
+    
+    
     private func addChildToContainer(childVC: UIViewController, to containerForChild: UIView) {
         addChild(childVC)
         containerForChild.addSubview(childVC.view)
@@ -53,10 +67,35 @@ class UserInfoVC: UIViewController {
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constraintPadding),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constraintPadding),
             headerView.heightAnchor.constraint(equalToConstant: 180)
         ])
     }
-
+    
+    
+    private func addItemViewOne() {
+        view.addSubview(itemViewOne)
+        itemViewOne.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: constraintPadding),
+            itemViewOne.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constraintPadding),
+            itemViewOne.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constraintPadding),
+            itemViewOne.heightAnchor.constraint(equalToConstant: 140)
+        ])
+    }
+    
+    
+    private func addItemViewTwo() {
+        view.addSubview(itemViewTwo)
+        itemViewTwo.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: constraintPadding),
+            itemViewTwo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constraintPadding),
+            itemViewTwo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constraintPadding),
+            itemViewTwo.heightAnchor.constraint(equalToConstant: 140)
+        ])
+    }
 }
