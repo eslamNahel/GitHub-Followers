@@ -34,6 +34,7 @@
 		EDD296C2278DB66700FF2083 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD296C1278DB66700FF2083 /* Constants.swift */; };
 		EDED45D32790799500958555 /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDED45D22790799500958555 /* GFItemInfoView.swift */; };
 		EDED45D52790839100958555 /* ItemInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDED45D42790839100958555 /* ItemInfoType.swift */; };
+		EDED45D7279086FA00958555 /* GFItemInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDED45D6279086FA00958555 /* GFItemInfoVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		EDD296C1278DB66700FF2083 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EDED45D22790799500958555 /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
 		EDED45D42790839100958555 /* ItemInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfoType.swift; sourceTree = "<group>"; };
+		EDED45D6279086FA00958555 /* GFItemInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 			children = (
 				ED0741B62730C91F00335105 /* GFAlertVC.swift */,
 				ED9DC508278C6F17005EB8C0 /* GFUserInfoHeaderVC.swift */,
+				EDED45D6279086FA00958555 /* GFItemInfoVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				ED9DC509278C6F17005EB8C0 /* GFUserInfoHeaderVC.swift in Sources */,
 				ED0741C12731D4B600335105 /* Follower.swift in Sources */,
 				ED0741B32730C67800335105 /* GFTitleLabel.swift in Sources */,
+				EDED45D7279086FA00958555 /* GFItemInfoVC.swift in Sources */,
 				ED9DC50B278C6F3D005EB8C0 /* GFSecondaryTitleLabel.swift in Sources */,
 				ED9DC50427846346005EB8C0 /* GFEmptyStateView.swift in Sources */,
 				ED0741C62731E0BF00335105 /* NetworkManager.swift in Sources */,
