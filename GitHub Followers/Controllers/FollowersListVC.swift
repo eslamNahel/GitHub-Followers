@@ -14,8 +14,7 @@ protocol FollowerListVCDelegate: AnyObject {
 
 class FollowersListVC: UIViewController {
     
-    //MARK: - Properties
-    
+    //MARK: - Component & Properties
     enum Section {
         case main
     }
@@ -49,36 +48,8 @@ class FollowersListVC: UIViewController {
     }
     
     
-    //MARK: - UI Configuration Methods
-    
-    private func configureViewController() {
-        view.backgroundColor = .systemBackground
-        navigationController?.navigationBar.prefersLargeTitles  = true
-    }
-    
-    
-    private func configureCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createFlowLayoutColumns(in: view))
-        view.addSubview(collectionView)
-        collectionView.delegate         = self
-        collectionView.backgroundColor  = .systemBackground
-        collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.resuseID)
-    }
-    
-    
-    private func configureSearchController() {
-        let searchController                                    = UISearchController()
-        searchController.searchResultsUpdater                   = self
-        searchController.searchBar.delegate                     = self
-        searchController.searchBar.placeholder                  = "Search for users"
-        searchController.obscuresBackgroundDuringPresentation   = false
-        navigationItem.hidesSearchBarWhenScrolling              = false
-        navigationItem.searchController                         = searchController
-    }
-    
     
     //MARK: - Networking methods
-    
     func getFollowers(username: String, page: Int) {
         showLoadingView()
         NetworkManager.shared.getFollowers(for: userName, page: page) { [weak self] results in
@@ -109,8 +80,13 @@ class FollowersListVC: UIViewController {
     }
     
     
-    //MARK: - Collection View data source methods
+    //MARK: - VC functionality methods
+    @objc func addButtonTapped() {
+        
+    }
     
+    
+    //MARK: - Collection View data source methods
     func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { collectionView, indexPath, follower in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.resuseID, for: indexPath) as! FollowerCell
@@ -126,11 +102,40 @@ class FollowersListVC: UIViewController {
         snapshot.appendItems(followers)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
+    
+    
+    //MARK: - UI Configuration Methods
+    private func configureViewController() {
+        view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.prefersLargeTitles  = true
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem = addButton
+    }
+    
+    
+    private func configureCollectionView() {
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createFlowLayoutColumns(in: view))
+        view.addSubview(collectionView)
+        collectionView.delegate         = self
+        collectionView.backgroundColor  = .systemBackground
+        collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.resuseID)
+    }
+    
+    
+    private func configureSearchController() {
+        let searchController                                    = UISearchController()
+        searchController.searchResultsUpdater                   = self
+        searchController.searchBar.delegate                     = self
+        searchController.searchBar.placeholder                  = "Search for users"
+        searchController.obscuresBackgroundDuringPresentation   = false
+        navigationItem.hidesSearchBarWhenScrolling              = false
+        navigationItem.searchController                         = searchController
+    }
 }
 
 
 //MARK: - VC extensions
-
 extension FollowersListVC: UICollectionViewDelegate {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
