@@ -20,6 +20,7 @@
 		ED0741C92732E7E400335105 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0741C82732E7E400335105 /* ErrorMessage.swift */; };
 		ED0741CC273307B700335105 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0741CB273307B700335105 /* FollowerCell.swift */; };
 		ED0741CE2733087E00335105 /* GFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0741CD2733087E00335105 /* GFImageView.swift */; };
+		ED49CA1127A1A8EB0084726A /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED49CA1027A1A8EB0084726A /* PersistenceManager.swift */; };
 		ED9DC50427846346005EB8C0 /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9DC50327846346005EB8C0 /* GFEmptyStateView.swift */; };
 		ED9DC50727861D96005EB8C0 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9DC50627861D96005EB8C0 /* UserInfoVC.swift */; };
 		ED9DC509278C6F17005EB8C0 /* GFUserInfoHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9DC508278C6F17005EB8C0 /* GFUserInfoHeaderVC.swift */; };
@@ -55,6 +56,7 @@
 		ED0741C82732E7E400335105 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		ED0741CB273307B700335105 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		ED0741CD2733087E00335105 /* GFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFImageView.swift; sourceTree = "<group>"; };
+		ED49CA1027A1A8EB0084726A /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		ED9DC50327846346005EB8C0 /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
 		ED9DC50627861D96005EB8C0 /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		ED9DC508278C6F17005EB8C0 /* GFUserInfoHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFUserInfoHeaderVC.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				ED0741C52731E0BF00335105 /* NetworkManager.swift */,
+				ED49CA1027A1A8EB0084726A /* PersistenceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				ED0741B72730C91F00335105 /* GFAlertVC.swift in Sources */,
 				EDED45D32790799500958555 /* GFItemInfoView.swift in Sources */,
 				EDED45D52790839100958555 /* ItemInfoType.swift in Sources */,
+				ED49CA1127A1A8EB0084726A /* PersistenceManager.swift in Sources */,
 				EDED45D927908E5300958555 /* GFRepoItemVC.swift in Sources */,
 				ED0741CC273307B700335105 /* FollowerCell.swift in Sources */,
 				ED0741C92732E7E400335105 /* ErrorMessage.swift in Sources */,
