@@ -7,12 +7,19 @@
 
 import UIKit
 
-enum SFSymbols {
-    static let location     = "mappin.and.ellipse"
-    static let repo         = "folder"
-    static let gists        = "text.alignleft"
-    static let followers    = "heart"
-    static let following    = "person.2"
+enum SFSymbolsImages {
+    static let location     = UIImage(systemName: "mappin.and.ellipse")
+    static let repo         = UIImage(systemName: "folder")
+    static let gists        = UIImage(systemName: "text.alignleft")
+    static let followers    = UIImage(systemName: "heart")
+    static let following    = UIImage(systemName: "person.2")
+}
+
+
+enum AppImages {
+    static let GHLogo           = UIImage(named: "gh-logo")
+    static let PlaceHolderImage = UIImage(named: "avatar-placeholder")
+    static let EmptyStateImage  = UIImage(named: "empty-state-logo")
 }
 
 

@@ -11,7 +11,7 @@ import UIKit
 class GFImageView: UIImageView {
     
     //MARK: - Components & Properties
-    let placeHolderImage = UIImage(named: "avatar-placeholder")
+    let placeHolderImage = AppImages.PlaceHolderImage
     
     
     //MARK: - Init Methods
