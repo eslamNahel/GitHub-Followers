@@ -32,7 +32,12 @@ class FollowerCell: UICollectionViewCell {
     //MARK: - View Data Methods
     func set(follower: Follower) {
         usernameLabel.text = follower.login
-        avatarImageView.downloadAvatarImage(from: follower.avatarUrl)
+        NetworkManager.shared.downloadImage(from: follower.avatarUrl) { [weak self] image in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.avatarImageView.image = image
+            }
+        }
     }
     
     

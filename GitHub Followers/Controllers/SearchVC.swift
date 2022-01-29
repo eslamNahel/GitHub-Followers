@@ -9,7 +9,7 @@ import UIKit
 
 class SearchVC: UIViewController {
     
-    //MARK: - Components & Properties 
+    //MARK: - Components & Properties
     let logoImageView       = UIImageView()
     let userNameTextField   = GFTextField()
     let CTAButton           = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
@@ -86,11 +86,10 @@ class SearchVC: UIViewController {
         
         if notification.name == UIResponder.keyboardWillHideNotification {
             self.buttonConstraint.constant = -50
-            self.view.layoutIfNeeded()
         } else {
             self.buttonConstraint.constant = -keyboardViewEndFrame.height + buttonBottomConstant
-            self.view.layoutIfNeeded()
         }
+        self.view.layoutIfNeeded()
     }
     
     
