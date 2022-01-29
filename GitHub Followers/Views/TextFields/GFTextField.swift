@@ -39,6 +39,7 @@ class GFTextField: UITextField {
         spellCheckingType           = .no
         placeholder                 = "Enter you username"
         returnKeyType               = .go
+        clearButtonMode             = .whileEditing
         translatesAutoresizingMaskIntoConstraints = false
     }
 }

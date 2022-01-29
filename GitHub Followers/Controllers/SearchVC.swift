@@ -9,7 +9,7 @@ import UIKit
 
 class SearchVC: UIViewController {
     
-    //MARK: - Components
+    //MARK: - Components & Properties 
     let logoImageView       = UIImageView()
     let userNameTextField   = GFTextField()
     let CTAButton           = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
@@ -19,6 +19,8 @@ class SearchVC: UIViewController {
     var logoImageConstraint: NSLayoutConstraint!
     let buttonBottomConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 30 : 50
     
+    
+    //MARK: - VC Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -48,7 +50,6 @@ class SearchVC: UIViewController {
     
     
     //MARK: - Additional Methods
-    
     private func createDismissKeyboardGesture() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
@@ -61,10 +62,10 @@ class SearchVC: UIViewController {
             return
         }
         
-        let followersVC         = FollowersListVC()
-        followersVC.userName    = userNameTextField.text
-        followersVC.title       = userNameTextField.text
+        userNameTextField.resignFirstResponder()
         
+        let username     = userNameTextField.text!
+        let followersVC  = FollowersListVC(username: username)
         navigationController?.pushViewController(followersVC, animated: true)
     }
     
@@ -93,8 +94,7 @@ class SearchVC: UIViewController {
     }
     
     
-    //MARK: - Configure UI Methods
-    
+    //MARK: - UI Configuration Methods
     private func configureLogoImageView() {
         view.addSubview(logoImageView)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -146,11 +146,10 @@ class SearchVC: UIViewController {
 
 
 //MARK: - Extensions
-
 extension SearchVC: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         pushFollowersVC()
-        createDismissKeyboardGesture()
         return true
     }
 }

@@ -19,16 +19,28 @@ class FollowersListVC: UIViewController {
         case main
     }
     
-    var userName: String!
-    var followers           = [Follower]()
-    var filteredFollowers   = [Follower]()
-    var page                = 1
-    var hasMoreFollowers    = true
-    var isSearching         = false
+    private var username: String!
+    private var followers           = [Follower]()
+    private var filteredFollowers   = [Follower]()
+    private var page                = 1
+    private var hasMoreFollowers    = true
+    private var isSearching         = false
     
-    var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
+    private var collectionView: UICollectionView!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
+    
+    //MARK: - Init methods
+    init(username: String) {
+        super.init(nibName: nil, bundle: nil)
+        self.username   = username
+        title           = username
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     //MARK: - VC lifecycle methods
     override func viewDidLoad() {
@@ -37,7 +49,7 @@ class FollowersListVC: UIViewController {
         configureViewController()
         configureSearchController()
         configureCollectionView()
-        getFollowers(username: userName, page: page)
+        getFollowers(username: username, page: page)
         configureDataSource()
     }
     
@@ -52,7 +64,7 @@ class FollowersListVC: UIViewController {
     //MARK: - Networking methods
     func getFollowers(username: String, page: Int) {
         showLoadingView()
-        NetworkManager.shared.getFollowers(for: userName, page: page) { [weak self] results in
+        NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] results in
             guard let self = self else { return }
             self.dismissLoadingView()
             switch results {
@@ -83,7 +95,7 @@ class FollowersListVC: UIViewController {
     //MARK: - VC functionality methods
     @objc func addButtonTapped() {
         self.showLoadingView()
-        NetworkManager.shared.getUserInfo(for: userName) { [weak self] results in
+        NetworkManager.shared.getUserInfo(for: username) { [weak self] results in
             guard let self = self else { return }
             self.dismissLoadingView()
             switch results {
@@ -165,7 +177,7 @@ extension FollowersListVC: UICollectionViewDelegate {
                 return
             }
             self.page += 1
-            self.getFollowers(username: userName, page: page)
+            self.getFollowers(username: username, page: page)
         }
     }
     
@@ -209,7 +221,7 @@ extension FollowersListVC: UISearchResultsUpdating, UISearchBarDelegate {
 extension FollowersListVC: FollowerListVCDelegate {
     
     func didRequestFollowers(with username: String) {
-        self.userName = username
+        self.username = username
         title = username
         self.page = 1
         self.followers.removeAll()
