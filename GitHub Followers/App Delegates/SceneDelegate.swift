@@ -17,42 +17,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: scene.coordinateSpace.bounds)
         window?.windowScene = scene
-        window?.rootViewController = createTabBar()
+        window?.rootViewController = GFTabBarController()
         window?.makeKeyAndVisible()
         
         configureNavBar()
     }
     
     
-    //MARK: - Tab bar and nav bar setup methods
-    
-    func createSearchNC() -> UINavigationController {
-        let searchVC = SearchVC()
-        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        searchVC.title = "Search"
-        
-        return UINavigationController(rootViewController: searchVC)
-    }
-    
-    
-    func createFavoritesNC() -> UINavigationController {
-        let favoritesVC = FavoritesVC()
-        favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        favoritesVC.title = "Favorites"
-        
-        return UINavigationController(rootViewController: favoritesVC)
-    }
-    
-    
-    func createTabBar() -> UITabBarController {
-        let tabBar = UITabBarController()
-        UITabBar.appearance().tintColor = .systemGreen
-        tabBar.viewControllers = [createSearchNC(), createFavoritesNC()]
-        
-        return tabBar
-    }
-    
-    
+    //MARK: - Nav bar setup method
     func configureNavBar() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -64,6 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
 
+    //MARK: - Scene Delegate methods
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
