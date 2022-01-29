@@ -40,6 +40,7 @@ class GFTextField: UITextField {
         spellCheckingType           = .no
         placeholder                 = "Enter a username"
         returnKeyType               = .go
+        keyboardType                = .asciiCapable
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
