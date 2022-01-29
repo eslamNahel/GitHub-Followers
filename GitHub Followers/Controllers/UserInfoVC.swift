@@ -15,16 +15,18 @@ protocol UserInfoVCDelegate: AnyObject {
 
 class UserInfoVC: UIViewController {
     
+    //MARK: - Components & Properties
     let headerView                  = UIView()
     let itemViewOne                 = UIView()
     let itemViewTwo                 = UIView()
     let dateLabel                   = GFBodyLabel(textAlignment: .center)
-    let constraintPadding: CGFloat  = 20
     
+    let constraintPadding: CGFloat  = 20
     var userName: String!
     weak var delegate: FollowerListVCDelegate?
 
     
+    //MARK: - VC Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -36,6 +38,7 @@ class UserInfoVC: UIViewController {
     }
     
     
+    //MARK: - VC Networking methods
     private func getUserData() {
         NetworkManager.shared.getUserInfo(for: userName) { results in
             switch results {
@@ -50,6 +53,12 @@ class UserInfoVC: UIViewController {
     }
     
     
+    //MARK: - VC Additional Methods
+    @objc func dismissVC() {
+        dismiss(animated: true)
+    }
+    
+    
     private func configureVCItems(with userInfo: User) {
         let repoView = GFRepoItemVC(user: userInfo)
         repoView.delegate = self
@@ -61,10 +70,6 @@ class UserInfoVC: UIViewController {
         self.addChildToContainer(childVC: repoView, to: self.itemViewOne)
         self.addChildToContainer(childVC: followersView, to: self.itemViewTwo)
         self.dateLabel.text = "On GitHub since: \(userInfo.createdAt.convertToUIFormat())"
-    }
-    
-    @objc func dismissVC() {
-        dismiss(animated: true)
     }
     
     
@@ -83,6 +88,7 @@ class UserInfoVC: UIViewController {
     }
     
     
+    //MARK: - UI Configuration methods
     private func addHeaderView() {
         view.addSubview(headerView)
         headerView.translatesAutoresizingMaskIntoConstraints = false
@@ -135,6 +141,7 @@ class UserInfoVC: UIViewController {
 }
 
 
+//MARK: - VC Extensions
 extension UserInfoVC: UserInfoVCDelegate {
     
     func didTapGetProfile(with user: User) {

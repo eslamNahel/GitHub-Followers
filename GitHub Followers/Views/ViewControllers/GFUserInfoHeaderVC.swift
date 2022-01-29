@@ -9,6 +9,7 @@ import UIKit
 
 class GFUserInfoHeaderVC: UIViewController {
     
+    //MARK: - Components & Properties
     let avatarImageView   = GFImageView(frame: .zero)
     let usernameLabel     = GFTitleLabel(textAlignment: .left, fontSize: 34)
     let nameLabel         = GFSecondaryTitleLabel(fontSize: 18)
@@ -19,6 +20,7 @@ class GFUserInfoHeaderVC: UIViewController {
     var user: User!
     
     
+    //MARK: - Init Methods
     init(user: User) {
         super.init(nibName: nil, bundle: nil)
         self.user = user
@@ -30,6 +32,7 @@ class GFUserInfoHeaderVC: UIViewController {
     }
     
     
+    //MARK: - VC Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         addAvatarImage()
@@ -43,14 +46,15 @@ class GFUserInfoHeaderVC: UIViewController {
     }
     
     
+    //MARK: - VC UI Configuration Methods
     private func configureUIElements() {
         avatarImageView.downloadAvatarImage(from: user.avatarUrl)
-        usernameLabel.text = user.login
-        nameLabel.text = user.name ?? ""
-        locationLabel.text = user.location ?? "Not Available"
-        bioLabel.text = user.bio ?? "Not Available"
         
-        locationImageView.image = UIImage(systemName: SFSymbols.location)
+        usernameLabel.text          = user.login
+        nameLabel.text              = user.name ?? ""
+        locationLabel.text          = user.location ?? "Not Available"
+        bioLabel.text               = user.bio ?? "Not Available"
+        locationImageView.image     = UIImage(systemName: SFSymbols.location)
         locationImageView.tintColor = .secondaryLabel
     }
 

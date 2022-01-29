@@ -9,7 +9,7 @@ import UIKit
 
 class GFTextField: UITextField {
 
-    //MARK: - initialization methods
+    //MARK: - Init methods
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -21,6 +21,7 @@ class GFTextField: UITextField {
     }
     
     
+    //MARK: - View UI Methods
     private func configure() {
         layer.cornerRadius          = 10
         layer.borderWidth           = 2
@@ -37,7 +38,7 @@ class GFTextField: UITextField {
         backgroundColor             = .tertiarySystemBackground
         autocorrectionType          = .no
         spellCheckingType           = .no
-        placeholder                 = "Enter you username"
+        placeholder                 = "Enter a username"
         returnKeyType               = .go
         clearButtonMode             = .whileEditing
         translatesAutoresizingMaskIntoConstraints = false

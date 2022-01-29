@@ -9,17 +9,17 @@ import UIKit
 
 class GFTitleLabel: UILabel {
 
+    //MARK: - Init Methods
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
     }
     
     
-    init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
-        super.init(frame: .zero)
+    convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
+        self.init(frame: .zero)
         self.textAlignment = textAlignment
         self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
-        configure()
     }
     
     
@@ -28,6 +28,7 @@ class GFTitleLabel: UILabel {
     }
     
     
+    //MARK: - View Methods
     private func configure() {
         textColor                   = .label
         adjustsFontSizeToFitWidth   = true

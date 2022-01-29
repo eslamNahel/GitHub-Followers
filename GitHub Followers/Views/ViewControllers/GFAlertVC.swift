@@ -9,24 +9,20 @@ import UIKit
 
 class GFAlertVC: UIViewController {
     
-    //MARK: - Components
     
-    let containerView   = UIView()
+    //MARK: - Components & Properties
+    let containerView   = GFAlertContainer()
     let titleLabel      = GFTitleLabel(textAlignment: .center, fontSize: 20)
     let messageLabel    = GFBodyLabel(textAlignment: .center)
     let actionButton    = GFButton(backgroundColor: .systemPink, title: "Ok")
-
-    //MARK: - Properties
     
     var alertTitle: String?
     var messageTitle: String?
     var actionLabel: String?
-    
     let padding: CGFloat = 20
     
     
-    //MARK: - Initialization methods
-    
+    //MARK: - Init methods
     init(title: String, message: String, buttonTitle: String) {
         super.init(nibName: nil, bundle: nil)
         self.alertTitle     = title
@@ -40,10 +36,11 @@ class GFAlertVC: UIViewController {
     }
     
     
+    //MARK: - VC Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
-     
+        view.backgroundColor = .black.withAlphaComponent(75)
+        
         configureContainerView()
         configureTitleLabel()
         configureActionButton()
@@ -51,16 +48,15 @@ class GFAlertVC: UIViewController {
     }
     
     
-    //MARK: - UI Configuration methods
+    //MARK: - VC UI Configuration methods
+    @objc private func dismissAlert() {
+        dismiss(animated: true)
+    }
+    
     
     private func configureContainerView() {
         view.addSubview(containerView)
-        containerView.backgroundColor       = .systemBackground
-        containerView.layer.cornerRadius    = 16
-        containerView.layer.borderColor     = UIColor.white.cgColor
-        containerView.layer.borderWidth     = 2
         
-        containerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -109,10 +105,5 @@ class GFAlertVC: UIViewController {
             messageLabel.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -12)
         ])
         
-    }
-    
-    
-    @objc private func dismissAlert() {
-        dismiss(animated: true)
     }
 }

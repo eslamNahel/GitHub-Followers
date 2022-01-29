@@ -42,6 +42,7 @@ class FollowersListVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     //MARK: - VC lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +59,6 @@ class FollowersListVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
     
     
     //MARK: - Networking methods

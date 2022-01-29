@@ -9,14 +9,18 @@ import UIKit
 
 class GFItemInfoView: UIView {
 
+    //MARK: - Components & Properties
     let symbolImageView = UIImageView()
     let titleLabel      = GFTitleLabel(textAlignment: .left, fontSize: 14)
     let countLabel      = GFTitleLabel(textAlignment: .center, fontSize: 14)
     
     
+    //MARK: - Init Methods
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        addSymbolImage()
+        addTitleLabel()
+        addCountLabel()
     }
     
     
@@ -25,13 +29,7 @@ class GFItemInfoView: UIView {
     }
     
     
-    private func configure() {
-        addSymbolImage()
-        addTitleLabel()
-        addCountLabel()
-    }
-    
-    
+    //MARK: - View Data Methods
     func set(itemInfoType: ItemInfoType, count: Int) {
         switch itemInfoType {
         case .repo:
@@ -52,6 +50,7 @@ class GFItemInfoView: UIView {
     }
 
     
+    //MARK: - View UI Methods
     private func addSymbolImage() {
         addSubview(symbolImageView)
         symbolImageView.translatesAutoresizingMaskIntoConstraints = false

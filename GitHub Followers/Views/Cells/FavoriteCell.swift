@@ -30,7 +30,7 @@ class FavoriteCell: UITableViewCell {
     }
     
     
-    //MARK: - Cell set data method
+    //MARK: - View Data Methods
     func set(favorite: Follower) {
         usernameLabel.text = favorite.login
         avatarImageView.downloadAvatarImage(from: favorite.avatarUrl)

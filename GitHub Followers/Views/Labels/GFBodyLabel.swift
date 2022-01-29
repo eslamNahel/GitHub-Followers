@@ -9,16 +9,16 @@ import UIKit
 
 class GFBodyLabel: UILabel {
 
+    //MARK: - Init Methods
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
     }
     
     
-    init(textAlignment: NSTextAlignment) {
-        super.init(frame: .zero)
+    convenience init(textAlignment: NSTextAlignment) {
+        self.init(frame: .zero)
         self.textAlignment = textAlignment
-        configure()
     }
     
     
@@ -27,6 +27,7 @@ class GFBodyLabel: UILabel {
     }
     
     
+    //MARK: - View UI Methods
     private func configure() {
         textColor                   = .secondaryLabel
         font                        = UIFont.preferredFont(forTextStyle: .body)

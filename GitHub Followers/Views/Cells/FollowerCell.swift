@@ -10,15 +10,17 @@ import UIKit
 
 class FollowerCell: UICollectionViewCell {
     
-    //MARK: - Components
+    //MARK: - Components & Properties
     static let reuseID     = "followerCell"
     let avatarImageView     = GFImageView(frame: .zero)
     let usernameLabel       = GFTitleLabel(textAlignment: .center, fontSize: 16)
+    private let padding: CGFloat = 8
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        addAvatarImageView()
+        addUsernameLabel()
     }
     
     
@@ -27,7 +29,7 @@ class FollowerCell: UICollectionViewCell {
     }
     
     
-    //MARK: - Component public methods
+    //MARK: - View Data Methods
     func set(follower: Follower) {
         usernameLabel.text = follower.login
         avatarImageView.downloadAvatarImage(from: follower.avatarUrl)
@@ -35,19 +37,22 @@ class FollowerCell: UICollectionViewCell {
     
     
     //MARK: - UI configuration method
-    
-    private func configure() {
+    private func addAvatarImageView() {
         addSubview(avatarImageView)
-        addSubview(usernameLabel)
-        
-        let padding: CGFloat = 8
         
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
             avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
             avatarImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
-            avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor),
-            
+            avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor)
+        ])
+    }
+    
+    
+    private func addUsernameLabel() {
+        addSubview(usernameLabel)
+        
+        NSLayoutConstraint.activate([
             usernameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 12),
             usernameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
             usernameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),

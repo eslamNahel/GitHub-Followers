@@ -9,7 +9,7 @@ import UIKit
 
 class GFButton: UIButton {
     
-    //MARK: - initialization methods
+    //MARK: - Initialization methods
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -17,17 +17,22 @@ class GFButton: UIButton {
     }
     
     
-    init(backgroundColor: UIColor, title: String) {
-        super.init(frame: .zero)
+    convenience init(backgroundColor: UIColor, title: String) {
+        self.init(frame: .zero)
         self.backgroundColor = backgroundColor
         self.setTitle(title, for: .normal)
-        
-        configure()
     }
     
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    //MARK: - View Methods
+    func set(background: UIColor, title: String) {
+        self.backgroundColor = background
+        setTitle(title, for: .normal)
     }
     
     
@@ -38,11 +43,4 @@ class GFButton: UIButton {
         
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    
-    func set(background: UIColor, title: String) {
-        self.backgroundColor = background
-        setTitle(title, for: .normal)
-    }
-
 }

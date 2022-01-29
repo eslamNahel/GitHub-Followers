@@ -9,22 +9,22 @@ import UIKit
 
 class GFEmptyStateView: UIView {
     
+    //MARK: - Components & Properties
     let messageLabel    = GFTitleLabel(textAlignment: .center, fontSize: 22)
     let logoImageView   = UIImageView()
 
+    
+    //MARK: - Init Methods
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         addMessageLabel()
         addLogoImage()
     }
     
     
-    init(message: String) {
-        super.init(frame: .zero)
+    convenience init(message: String) {
+        self.init(frame: .zero)
         messageLabel.text = message
-        addMessageLabel()
-        addLogoImage()
     }
     
     
@@ -33,6 +33,7 @@ class GFEmptyStateView: UIView {
     }
     
     
+    //MARK: - View UI Methods
     private func addMessageLabel() {
         addSubview(messageLabel)
         

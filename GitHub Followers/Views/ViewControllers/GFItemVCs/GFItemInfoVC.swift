@@ -9,6 +9,7 @@ import UIKit
 
 class GFItemInfoVC: UIViewController {
     
+    //MARK: - Components & Properties
     let stackView           = UIStackView()
     let itemInfoViewOne     = GFItemInfoView()
     let itemInfoViewTwo     = GFItemInfoView()
@@ -20,6 +21,7 @@ class GFItemInfoVC: UIViewController {
     weak var delegate: UserInfoVCDelegate?
     
     
+    //MARK: - Init Methods
     init(user: User) {
         super.init(nibName: nil, bundle: nil)
         self.user = user
@@ -31,6 +33,7 @@ class GFItemInfoVC: UIViewController {
     }
     
     
+    //MARK: - VC Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBackground()
@@ -39,8 +42,8 @@ class GFItemInfoVC: UIViewController {
     }
     
     
+    //MARK: - VC Additional Methods
     @objc func didTapOnActionButton() {}
-    
     
     private func configureBackground() {
         view.layer.cornerRadius = 18
@@ -49,6 +52,7 @@ class GFItemInfoVC: UIViewController {
     }
     
     
+    //MARK: - VC UI Configuration
     private func addStackView() {
         view.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false

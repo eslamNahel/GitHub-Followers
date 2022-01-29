@@ -103,8 +103,6 @@ class SearchVC: UIViewController {
         let logoImageTopConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 60 : 80
         let logoImageWidthAndHeight: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 180 : 200
         
-        print("top is", logoImageTopConstant)
-        
         logoImageConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: logoImageTopConstant)
         logoImageConstraint.isActive = true
         

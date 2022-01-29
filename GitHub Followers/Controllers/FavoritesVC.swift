@@ -8,10 +8,13 @@
 import UIKit
 
 class FavoritesVC: UIViewController {
-
+    
+    //MARK: - Components & Properties
     let tableView = UITableView()
     var favorites = [Follower]()
     
+    
+    //MARK: - VC Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -25,23 +28,7 @@ class FavoritesVC: UIViewController {
     }
     
     
-    private func configureViewController() {
-        view.backgroundColor    = .systemBackground
-        title                   = "Favorites"
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
-    
-    
-    private func configureTableView() {
-        view.addSubview(tableView)
-        tableView.frame         = view.bounds
-        tableView.rowHeight     = 80
-        tableView.delegate      = self
-        tableView.dataSource    = self
-        tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseID)
-    }
-    
-    
+    //MARK: - VC Networking methods
     private func getFavorites() {
         PersistenceManager.shared.getFavorites { [weak self] results in
             guard let self = self else { return }
@@ -60,6 +47,25 @@ class FavoritesVC: UIViewController {
                 self.presentAlertOnMainThread(title: "Something went wrong!", message: error.rawValue, actionTitle: "Ok")
             }
         }
+    }
+    
+    
+    
+    //MARK: - UI Configuration methods
+    private func configureViewController() {
+        view.backgroundColor    = .systemBackground
+        title                   = "Favorites"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    
+    private func configureTableView() {
+        view.addSubview(tableView)
+        tableView.frame         = view.bounds
+        tableView.rowHeight     = 80
+        tableView.delegate      = self
+        tableView.dataSource    = self
+        tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseID)
     }
 }
 

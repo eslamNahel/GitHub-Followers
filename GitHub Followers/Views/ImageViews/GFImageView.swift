@@ -10,9 +10,12 @@ import UIKit
 
 class GFImageView: UIImageView {
     
+    //MARK: - Components & Properties
     let placeHolderImage = UIImage(named: "avatar-placeholder")
     let cache           = NetworkManager.shared.cache
     
+    
+    //MARK: - Init Methods
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -24,6 +27,7 @@ class GFImageView: UIImageView {
     }
     
     
+    //MARK: - View UI Methods
     private func configure() {
         layer.cornerRadius  = 10
         clipsToBounds       = true
@@ -33,6 +37,7 @@ class GFImageView: UIImageView {
     }
     
     
+    //MARK: - View Data Methods
     func downloadAvatarImage(from urlString: String) {
         
         let cacheKey = NSString(string: urlString)
@@ -44,38 +49,23 @@ class GFImageView: UIImageView {
             return
         }
         
-        
-        guard let url = URL(string: urlString) else {
-            return
-        }
+        guard let url = URL(string: urlString) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let self = self else {
-                return
-            }
-            
-            if error != nil {
-                return
-            }
+            guard let self = self else { return }
+            if error != nil { return }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 return
             }
             
-            guard let data = data else {
-                return
-            }
-
-            guard let image = UIImage(data: data) else {
-                return
-            }
+            guard let data = data else { return }
+            guard let image = UIImage(data: data) else { return }
             
             self.cache.setObject(image, forKey: cacheKey)
-            
             DispatchQueue.main.async {
                 self.image = image
             }
-            
         }
         task.resume()
     }
