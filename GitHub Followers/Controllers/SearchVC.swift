@@ -16,6 +16,8 @@ class SearchVC: UIViewController {
     
     var isUserNameEntered: Bool { return !userNameTextField.text!.isEmpty}
     var buttonConstraint: NSLayoutConstraint!
+    var logoImageConstraint: NSLayoutConstraint!
+    let buttonBottomConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 30 : 50
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +87,7 @@ class SearchVC: UIViewController {
             self.buttonConstraint.constant = -50
             self.view.layoutIfNeeded()
         } else {
-            self.buttonConstraint.constant = -keyboardViewEndFrame.height + 75
+            self.buttonConstraint.constant = -keyboardViewEndFrame.height + buttonBottomConstant
             self.view.layoutIfNeeded()
         }
     }
@@ -98,11 +100,18 @@ class SearchVC: UIViewController {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.image = UIImage(named: "gh-logo")!
         
+        let logoImageTopConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 60 : 80
+        let logoImageWidthAndHeight: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 180 : 200
+        
+        print("top is", logoImageTopConstant)
+        
+        logoImageConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: logoImageTopConstant)
+        logoImageConstraint.isActive = true
+        
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImageView.heightAnchor.constraint(equalToConstant: 200),
-            logoImageView.widthAnchor.constraint(equalToConstant: 200)
+            logoImageView.heightAnchor.constraint(equalToConstant: logoImageWidthAndHeight),
+            logoImageView.widthAnchor.constraint(equalToConstant: logoImageWidthAndHeight)
         ])
     }
     
