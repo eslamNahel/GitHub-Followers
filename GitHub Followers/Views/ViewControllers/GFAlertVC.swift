@@ -39,7 +39,7 @@ class GFAlertVC: UIViewController {
     //MARK: - VC Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black.withAlphaComponent(75)
+        view.backgroundColor = .black.withAlphaComponent(0.75)
         
         configureContainerView()
         configureTitleLabel()

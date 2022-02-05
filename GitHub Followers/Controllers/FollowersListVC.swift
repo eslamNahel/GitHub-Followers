@@ -12,7 +12,7 @@ protocol FollowerListVCDelegate: AnyObject {
 }
 
 
-class FollowersListVC: UIViewController {
+class FollowersListVC: UIViewController, Loadable {
     
     //MARK: - Component & Properties
     enum Section {
@@ -29,6 +29,7 @@ class FollowersListVC: UIViewController {
     
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
+    var containerView: UIView!
     
     
     //MARK: - Init methods
@@ -68,7 +69,7 @@ class FollowersListVC: UIViewController {
         isLoadingFollowers = true
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] results in
             guard let self = self else { return }
-            self.dismissLoadingView()
+            self.hideLoadingView()
             switch results {
             case .success(let followers):
                 if followers.count < 100 {
@@ -100,7 +101,7 @@ class FollowersListVC: UIViewController {
         self.showLoadingView()
         NetworkManager.shared.getUserInfo(for: username) { [weak self] results in
             guard let self = self else { return }
-            self.dismissLoadingView()
+            self.hideLoadingView()
             switch results {
             case .success(let favoriteInfo):
                 let favorite = Follower(login: favoriteInfo.login, avatarUrl: favoriteInfo.avatarUrl)

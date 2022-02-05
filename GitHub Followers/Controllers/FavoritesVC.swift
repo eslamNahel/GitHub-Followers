@@ -7,11 +7,12 @@
 
 import UIKit
 
-class FavoritesVC: UIViewController {
+class FavoritesVC: UIViewController, Loadable {
     
     //MARK: - Components & Properties
     let tableView = UITableView()
     var favorites = [Follower]()
+    var containerView: UIView!
     
     
     //MARK: - VC Lifecycle methods
