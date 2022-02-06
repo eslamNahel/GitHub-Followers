@@ -15,6 +15,9 @@ protocol UserInfoVCDelegate: AnyObject {
 class UserInfoVC: UIViewController {
     
     //MARK: - Components & Properties
+    let scrollView                  = UIScrollView()
+    let contentView                 = UIView()
+    
     let headerView                  = UIView()
     let itemViewOne                 = UIView()
     let itemViewTwo                 = UIView()
@@ -29,6 +32,7 @@ class UserInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
+        addScrollView()
         addHeaderView()
         addItemViewOne()
         addItemViewTwo()
@@ -88,52 +92,75 @@ class UserInfoVC: UIViewController {
     
     
     //MARK: - UI Configuration methods
+    private func addScrollView() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.heightAnchor.constraint(equalToConstant: 650)
+        ])
+    }
+    
+    
     private func addHeaderView() {
-        view.addSubview(headerView)
+        contentView.addSubview(headerView)
         headerView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constraintPadding),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constraintPadding),
+            headerView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: constraintPadding),
+            headerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -constraintPadding),
             headerView.heightAnchor.constraint(equalToConstant: 210)
         ])
     }
     
     
     private func addItemViewOne() {
-        view.addSubview(itemViewOne)
+        contentView.addSubview(itemViewOne)
         itemViewOne.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: constraintPadding),
-            itemViewOne.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constraintPadding),
-            itemViewOne.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constraintPadding),
+            itemViewOne.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: constraintPadding),
+            itemViewOne.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -constraintPadding),
             itemViewOne.heightAnchor.constraint(equalToConstant: 140)
         ])
     }
     
     
     private func addItemViewTwo() {
-        view.addSubview(itemViewTwo)
+        contentView.addSubview(itemViewTwo)
         itemViewTwo.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: constraintPadding),
-            itemViewTwo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constraintPadding),
-            itemViewTwo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constraintPadding),
+            itemViewTwo.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: constraintPadding),
+            itemViewTwo.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -constraintPadding),
             itemViewTwo.heightAnchor.constraint(equalToConstant: 140)
         ])
     }
     
     
     private func addDateLabel() {
-        view.addSubview(dateLabel)
+        contentView.addSubview(dateLabel)
         
         NSLayoutConstraint.activate([
             dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: constraintPadding),
-            dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constraintPadding),
-            dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constraintPadding),
+            dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: constraintPadding),
+            dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -constraintPadding),
             dateLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }

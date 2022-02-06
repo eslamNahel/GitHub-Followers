@@ -103,13 +103,13 @@ extension FavoritesVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         let favoriteToDelete = favorites[indexPath.row]
-        self.favorites.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .left)
-        
+
         PersistenceManager.shared.updateFavoritesList(with: favoriteToDelete, actionType: .remove) { [weak self] error in
             guard let self = self else { return }
             
             guard let error = error else {
+                self.favorites.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .left)
                 if favorites.isEmpty {
                     self.getFavorites()
                 }

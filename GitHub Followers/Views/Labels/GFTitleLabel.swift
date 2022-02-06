@@ -33,7 +33,7 @@ class GFTitleLabel: UILabel {
         textColor                   = .label
         adjustsFontSizeToFitWidth   = true
         minimumScaleFactor          = 0.9
-        lineBreakMode               = .byTruncatingHead
+        lineBreakMode               = .byTruncatingTail
         
         translatesAutoresizingMaskIntoConstraints = false
     }
