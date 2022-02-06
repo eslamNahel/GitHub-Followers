@@ -9,8 +9,7 @@
 import UIKit
 
 protocol UserInfoVCDelegate: AnyObject {
-    func didTapGetProfile(with user: User)
-    func didTapGetFollowers(with user: User)
+    func didRequestFollowers(with username: String)
 }
 
 class UserInfoVC: UIViewController {
@@ -23,7 +22,7 @@ class UserInfoVC: UIViewController {
     
     let constraintPadding: CGFloat  = 20
     var userName: String!
-    weak var delegate: FollowerListVCDelegate?
+    weak var delegate: UserInfoVCDelegate?
 
     
     //MARK: - VC Lifecycle methods
@@ -97,7 +96,7 @@ class UserInfoVC: UIViewController {
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constraintPadding),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constraintPadding),
-            headerView.heightAnchor.constraint(equalToConstant: 180)
+            headerView.heightAnchor.constraint(equalToConstant: 210)
         ])
     }
     
@@ -142,7 +141,7 @@ class UserInfoVC: UIViewController {
 
 
 //MARK: - VC Extensions
-extension UserInfoVC: UserInfoVCDelegate {
+extension UserInfoVC: ItemInfoVCDelegate {
     
     func didTapGetProfile(with user: User) {
         guard let url = URL(string: user.htmlUrl) else {

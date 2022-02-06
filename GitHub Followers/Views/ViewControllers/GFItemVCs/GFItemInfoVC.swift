@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol ItemInfoVCDelegate: AnyObject {
+    func didTapGetProfile(with user: User)
+    func didTapGetFollowers(with user: User)
+}
+
 class GFItemInfoVC: UIViewController {
     
     //MARK: - Components & Properties
@@ -18,7 +23,7 @@ class GFItemInfoVC: UIViewController {
     let constraintsPadding: CGFloat = 20
     
     var user: User!
-    weak var delegate: UserInfoVCDelegate?
+    weak var delegate: ItemInfoVCDelegate?
     
     
     //MARK: - Init Methods

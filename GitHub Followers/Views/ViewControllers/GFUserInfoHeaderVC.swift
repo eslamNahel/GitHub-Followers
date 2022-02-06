@@ -131,7 +131,7 @@ class GFUserInfoHeaderVC: UIViewController {
     
     private func addBioLabel() {
         view.addSubview(bioLabel)
-        bioLabel.numberOfLines = 3
+        bioLabel.numberOfLines = 0
         bioLabel.lineBreakMode = .byTruncatingTail
         bioLabel.minimumScaleFactor = 0.9
         
@@ -139,7 +139,7 @@ class GFUserInfoHeaderVC: UIViewController {
             bioLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 12),
             bioLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),
             bioLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bioLabel.heightAnchor.constraint(equalToConstant: 60)
+            bioLabel.heightAnchor.constraint(equalToConstant: 90)
         ])
     }
 }

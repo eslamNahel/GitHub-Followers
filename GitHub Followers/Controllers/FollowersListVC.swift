@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol FollowerListVCDelegate: AnyObject {
-    func didRequestFollowers(with username: String)
-}
-
 
 class FollowersListVC: UIViewController, Loadable {
     
@@ -159,7 +155,6 @@ class FollowersListVC: UIViewController, Loadable {
     private func configureSearchController() {
         let searchController                                    = UISearchController()
         searchController.searchResultsUpdater                   = self
-        searchController.searchBar.delegate                     = self
         searchController.searchBar.placeholder                  = "Search for users"
         searchController.obscuresBackgroundDuringPresentation   = false
         navigationItem.hidesSearchBarWhenScrolling              = false
@@ -199,7 +194,7 @@ extension FollowersListVC: UICollectionViewDelegate {
 }
 
 
-extension FollowersListVC: UISearchResultsUpdating, UISearchBarDelegate {
+extension FollowersListVC: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let filter = searchController.searchBar.text, !filter.isEmpty else {
@@ -215,16 +210,10 @@ extension FollowersListVC: UISearchResultsUpdating, UISearchBarDelegate {
         
         self.updateData(on: self.filteredFollowers)
     }
-    
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        isSearching = false
-        self.updateData(on: self.followers)
-    }
 }
 
 
-extension FollowersListVC: FollowerListVCDelegate {
+extension FollowersListVC: UserInfoVCDelegate {
     
     func didRequestFollowers(with username: String) {
         self.username = username
