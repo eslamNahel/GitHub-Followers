@@ -141,7 +141,7 @@ class UserInfoVC: UIViewController {
 
 
 //MARK: - VC Extensions
-extension UserInfoVC: ItemInfoVCDelegate {
+extension UserInfoVC: GFFollowerItemVCDelegate, GFRepoItemVCDelegate {
     
     func didTapGetProfile(with user: User) {
         guard let url = URL(string: user.htmlUrl) else {

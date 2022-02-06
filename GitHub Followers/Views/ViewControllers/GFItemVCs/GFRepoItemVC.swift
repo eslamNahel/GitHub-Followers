@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol GFRepoItemVCDelegate: AnyObject {
+    func didTapGetProfile(with user: User)
+}
+
 class GFRepoItemVC: GFItemInfoVC {
     
+    weak var delegate: GFRepoItemVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
