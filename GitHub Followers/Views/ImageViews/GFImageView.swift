@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class GFImageView: UIImageView {
     
     //MARK: - Components & Properties

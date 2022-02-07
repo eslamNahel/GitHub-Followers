@@ -19,6 +19,7 @@ class GFAlertVC: UIViewController {
     var alertTitle: String?
     var messageTitle: String?
     var actionLabel: String?
+    
     let padding: CGFloat = 20
     
     

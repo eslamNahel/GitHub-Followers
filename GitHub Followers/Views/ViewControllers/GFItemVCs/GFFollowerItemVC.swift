@@ -13,13 +13,18 @@ protocol GFFollowerItemVCDelegate: AnyObject {
 
 class GFFollowerItemVC: GFItemInfoVC {
     
+    //MARK: - Properties
     weak var delegate: GFFollowerItemVCDelegate?
     
+    
+    //MARK: - VC Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configureVCItems()
     }
     
+    
+    //MARK: - VC Methods
     override func didTapOnActionButton() {
         delegate?.didTapGetFollowers(with: user)
     }

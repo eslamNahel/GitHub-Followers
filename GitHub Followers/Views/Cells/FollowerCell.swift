@@ -11,12 +11,13 @@ import UIKit
 class FollowerCell: UICollectionViewCell {
     
     //MARK: - Components & Properties
-    static let reuseID     = "followerCell"
-    let avatarImageView     = GFImageView(frame: .zero)
-    let usernameLabel       = GFTitleLabel(textAlignment: .center, fontSize: 16)
-    private let padding: CGFloat = 8
+    static let reuseID              = "followerCell"
+    let avatarImageView             = GFImageView(frame: .zero)
+    let usernameLabel               = GFTitleLabel(textAlignment: .center, fontSize: 16)
+    private let padding: CGFloat    = 8
     
     
+    //MARK: - Init Methods
     override init(frame: CGRect) {
         super.init(frame: frame)
         addAvatarImageView()

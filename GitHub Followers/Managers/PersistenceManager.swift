@@ -7,21 +7,21 @@
 
 import UIKit
 
-
 enum FavoritesManagerActionType {
     case add
     case remove
 }
 
 class PersistenceManager {
+    
+    //MARK: - Properties
     static let shared       = PersistenceManager()
     private let defaults    = UserDefaults.standard
     
-    private enum Keys {
-        static let favorites = "favorites"
-    }
+    private enum Keys { static let favorites = "favorites" }
     
     
+    //MARK: - Public Methods
     func updateFavoritesList(with favorite: Follower, actionType: FavoritesManagerActionType, completed: (ErrorMessage?) -> Void) {
         getFavorites { results in
             switch results {
@@ -37,9 +37,7 @@ class PersistenceManager {
                 case .remove:
                     savedFavorites.removeAll { $0.login == favorite.login }
                 }
-                
                 completed(saveFavorites(favorites: savedFavorites))
-                
             case .failure(let error):
                 completed(error)
             }
@@ -63,6 +61,7 @@ class PersistenceManager {
     }
     
     
+    //MARK: - Private Methods
     private func saveFavorites(favorites: [Follower]) -> ErrorMessage? {
         do {
             let encoder = JSONEncoder()

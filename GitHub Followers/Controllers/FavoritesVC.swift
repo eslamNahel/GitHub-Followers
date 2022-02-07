@@ -35,15 +35,7 @@ class FavoritesVC: UIViewController, Loadable {
             guard let self = self else { return }
             switch results {
             case .success(let favorites):
-                guard !favorites.isEmpty else {
-                    self.showEmptyStateView(with: "Hey! you have no favorites, add one now! 😉", in: self.view)
-                    return
-                }
-                self.favorites = favorites
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.view.bringSubviewToFront(self.tableView)
-                }
+                self.updateFavoritesList(with: favorites)
             case .failure(let error):
                 self.presentAlertOnMainThread(title: "Something went wrong!", message: error.rawValue, actionTitle: "Ok")
             }
@@ -51,12 +43,24 @@ class FavoritesVC: UIViewController, Loadable {
     }
     
     
+    private func updateFavoritesList(with favorites: [Follower]) {
+        guard !favorites.isEmpty else {
+            self.showEmptyStateView(with: "Hey! you have no favorites, add one now! 😉", in: self.view)
+            return
+        }
+        self.favorites = favorites
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.view.bringSubviewToFront(self.tableView)
+        }
+    }
+    
     
     //MARK: - UI Configuration methods
     private func configureViewController() {
-        view.backgroundColor    = .systemBackground
-        title                   = "Favorites"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        view.backgroundColor                                    = .systemBackground
+        title                                                   = "Favorites"
+        navigationController?.navigationBar.prefersLargeTitles  = true
     }
     
     
@@ -91,8 +95,10 @@ extension FavoritesVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        let favorite = favorites[indexPath.row]
-        let followerListVC = FollowersListVC(username: favorite.login)
+        
+        let favorite        = favorites[indexPath.row]
+        let followerListVC  = FollowersListVC(username: favorite.login)
+        
         navigationController?.pushViewController(followerListVC, animated: true)
     }
     

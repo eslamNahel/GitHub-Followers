@@ -14,7 +14,7 @@ extension UIViewController {
     
     func presentAlertOnMainThread(title: String, message: String, actionTitle: String) {
         DispatchQueue.main.async {
-            let alertVC = GFAlertVC(title: title, message: message, buttonTitle: actionTitle)
+            let alertVC                     = GFAlertVC(title: title, message: message, buttonTitle: actionTitle)
             alertVC.modalPresentationStyle  = .overFullScreen
             alertVC.modalTransitionStyle    = .crossDissolve
             self.present(alertVC, animated: true)
@@ -23,8 +23,8 @@ extension UIViewController {
     
     
     func presentSafariVC(with url: URL) {
-        let safariVC = SFSafariViewController(url: url)
-        safariVC.preferredControlTintColor = .systemGreen
+        let safariVC                        = SFSafariViewController(url: url)
+        safariVC.preferredControlTintColor  = .systemGreen
         present(safariVC, animated: true)
     }
 }

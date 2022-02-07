@@ -12,6 +12,7 @@ class GFEmptyStateView: UIView {
     //MARK: - Components & Properties
     let messageLabel    = GFTitleLabel(textAlignment: .center, fontSize: 22)
     let logoImageView   = UIImageView()
+    
     var logoImageConstraints: NSLayoutConstraint!
 
     
@@ -38,10 +39,10 @@ class GFEmptyStateView: UIView {
     private func addMessageLabel() {
         addSubview(messageLabel)
         
-        messageLabel.numberOfLines  = 3
-        messageLabel.textColor      = .secondaryLabel
+        messageLabel.numberOfLines      = 3
+        messageLabel.textColor          = .secondaryLabel
         
-        let messageConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 150 : 200
+        let messageConstant: CGFloat    = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 150 : 200
         
         NSLayoutConstraint.activate([
             messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -messageConstant),
@@ -54,15 +55,15 @@ class GFEmptyStateView: UIView {
     
     private func addLogoImage() {
         addSubview(logoImageView)
-        
-        logoImageView.image = AppImages.EmptyStateImage
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        let logoImageConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 50 : 30
-        logoImageConstraints = logoImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: logoImageConstant)
-        logoImageConstraints.isActive = true
+        logoImageView.image             = AppImages.EmptyStateImage
         
-        let logoImageWidth: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 1.1 : 1.3
+        let logoImageConstant: CGFloat  = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 50 : 30
+        logoImageConstraints            = logoImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: logoImageConstant)
+        logoImageConstraints.isActive   = true
+        
+        let logoImageWidth: CGFloat 	= DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 1.1 : 1.3
         
         NSLayoutConstraint.activate([
             logoImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: logoImageWidth),

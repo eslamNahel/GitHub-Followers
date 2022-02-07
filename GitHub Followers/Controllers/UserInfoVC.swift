@@ -25,6 +25,7 @@ class UserInfoVC: UIViewController {
     
     let constraintPadding: CGFloat  = 20
     var userName: String!
+    
     weak var delegate: UserInfoVCDelegate?
 
     
@@ -47,7 +48,7 @@ class UserInfoVC: UIViewController {
             switch results {
             case .success(let userInfo):
                 DispatchQueue.main.async {
-                    self.configureVCItems(with: userInfo)
+                    self.updateUIWithUserInfo(with: userInfo)
                 }
             case .failure(let error):
                 self.presentAlertOnMainThread(title: "Something baaad happened!", message: error.rawValue, actionTitle: "Alrighty")
@@ -56,18 +57,12 @@ class UserInfoVC: UIViewController {
     }
     
     
-    //MARK: - VC Additional Methods
-    @objc func dismissVC() {
-        dismiss(animated: true)
-    }
-    
-    
-    private func configureVCItems(with userInfo: User) {
-        let repoView = GFRepoItemVC(user: userInfo)
-        repoView.delegate = self
+    private func updateUIWithUserInfo(with userInfo: User) {
+        let repoView            = GFRepoItemVC(user: userInfo)
+        repoView.delegate       = self
         
-        let followersView = GFFollowerItemVC(user: userInfo)
-        followersView.delegate = self
+        let followersView       = GFFollowerItemVC(user: userInfo)
+        followersView.delegate  = self
         
         self.addChildToContainer(childVC: GFUserInfoHeaderVC(user: userInfo), to: self.headerView)
         self.addChildToContainer(childVC: repoView, to: self.itemViewOne)
@@ -76,10 +71,9 @@ class UserInfoVC: UIViewController {
     }
     
     
-    private func configureViewController() {
-        view.backgroundColor = .systemBackground
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
-        navigationItem.rightBarButtonItem = doneButton
+    //MARK: - VC Additional Methods
+    @objc func dismissVC() {
+        dismiss(animated: true)
     }
     
     
@@ -92,9 +86,17 @@ class UserInfoVC: UIViewController {
     
     
     //MARK: - UI Configuration methods
+    private func configureViewController() {
+        view.backgroundColor = .systemBackground
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
+        navigationItem.rightBarButtonItem = doneButton
+    }
+
+        
     private func addScrollView() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -103,7 +105,6 @@ class UserInfoVC: UIViewController {
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
             
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),

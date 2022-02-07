@@ -7,17 +7,16 @@
 
 import UIKit
 
-
 class FollowersListVC: UIViewController, Loadable {
     
     //MARK: - Component & Properties
-    enum Section {
-        case main
-    }
+    enum Section { case main }
     
     private var username: String!
+    
     private var followers           = [Follower]()
     private var filteredFollowers   = [Follower]()
+    
     private var page                = 1
     private var hasMoreFollowers    = true
     private var isSearching         = false
@@ -68,26 +67,31 @@ class FollowersListVC: UIViewController, Loadable {
             self.hideLoadingView()
             switch results {
             case .success(let followers):
-                if followers.count < 100 {
-                    self.hasMoreFollowers = false
-                }
-                self.followers.append(contentsOf: followers)
-                
-                if self.followers.isEmpty {
-                    let message = "This user doesn't have any followers! Go and follow them 😉"
-                    DispatchQueue.main.async {
-                        self.showEmptyStateView(with: message, in: self.view)
-                    }
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    self.updateData(on: self.followers)
-                }
+                self.updateFollowerList(with: followers)
             case .failure(let error):
                 self.presentAlertOnMainThread(title: "Sth baaaad happened", message: error.rawValue, actionTitle: "Alrighty")
             }
             self.isLoadingFollowers = false
+        }
+    }
+    
+    
+    private func updateFollowerList(with followers: [Follower]) {
+        if followers.count < 100 {
+            self.hasMoreFollowers = false
+        }
+        self.followers.append(contentsOf: followers)
+        
+        if self.followers.isEmpty {
+            let message = "This user doesn't have any followers! Go and follow them 😉"
+            DispatchQueue.main.async {
+                self.showEmptyStateView(with: message, in: self.view)
+            }
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.updateData(on: self.followers)
         }
     }
     
@@ -100,17 +104,22 @@ class FollowersListVC: UIViewController, Loadable {
             self.hideLoadingView()
             switch results {
             case .success(let favoriteInfo):
-                let favorite = Follower(login: favoriteInfo.login, avatarUrl: favoriteInfo.avatarUrl)
-                PersistenceManager.shared.updateFavoritesList(with: favorite, actionType: .add) { [weak self] gfError in
-                    if let gfError = gfError {
-                        self?.presentAlertOnMainThread(title: "Something went wrong!", message: gfError.rawValue, actionTitle: "Oki")
-                        return
-                    }
-                    self?.presentAlertOnMainThread(title: "Success!", message: "You have saved this user to favorites 🥳", actionTitle: "Hooraay")
-                }
+                self.addToFavoritesList(favoriteInfo: favoriteInfo)
             case .failure(let error):
                 self.presentAlertOnMainThread(title: "Something went wrong!", message: error.rawValue, actionTitle: "Oki")
             }
+        }
+    }
+    
+    
+    private func addToFavoritesList(favoriteInfo: User) {
+        let favorite = Follower(login: favoriteInfo.login, avatarUrl: favoriteInfo.avatarUrl)
+        PersistenceManager.shared.updateFavoritesList(with: favorite, actionType: .add) { [weak self] gfError in
+            if let gfError = gfError {
+                self?.presentAlertOnMainThread(title: "Something went wrong!", message: gfError.rawValue, actionTitle: "Oki")
+                return
+            }
+            self?.presentAlertOnMainThread(title: "Success!", message: "You have saved this user to favorites 🥳", actionTitle: "Hooraay")
         }
     }
     
@@ -135,11 +144,11 @@ class FollowersListVC: UIViewController, Loadable {
     
     //MARK: - UI Configuration Methods
     private func configureViewController() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor                                    = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles  = true
         
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
-        navigationItem.rightBarButtonItem = addButton
+        let addButton                                           = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem                       = addButton
     }
     
     
@@ -167,9 +176,9 @@ class FollowersListVC: UIViewController, Loadable {
 extension FollowersListVC: UICollectionViewDelegate {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let offSetY = scrollView.contentOffset.y + 170
-        let contentHeight = scrollView.contentSize.height
-        let height = scrollView.frame.size.height
+        let offSetY         = scrollView.contentOffset.y + 170
+        let contentHeight   = scrollView.contentSize.height
+        let height          = scrollView.frame.size.height
         
         if offSetY >= contentHeight - height {
             guard hasMoreFollowers, !isLoadingFollowers else {
@@ -182,13 +191,14 @@ extension FollowersListVC: UICollectionViewDelegate {
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let followersArray = isSearching ? filteredFollowers : followers
-        let follower = followersArray[indexPath.item]
+        let followersArray  = isSearching ? filteredFollowers : followers
+        let follower        = followersArray[indexPath.item]
         
-        let userInfoVC = UserInfoVC()
+        let userInfoVC      = UserInfoVC()
         userInfoVC.delegate = self
         userInfoVC.userName = follower.login
-        let navVC = UINavigationController(rootViewController: userInfoVC)
+        let navVC           = UINavigationController(rootViewController: userInfoVC)
+        
         present(navVC, animated: true)
     }
 }
@@ -203,8 +213,9 @@ extension FollowersListVC: UISearchResultsUpdating {
             isSearching = false
             return
         }
-        isSearching = true
-        filteredFollowers = followers.filter {
+        
+        self.isSearching = true
+        self.filteredFollowers = self.followers.filter {
             $0.login.lowercased().contains(filter.lowercased())
         }
         
@@ -216,13 +227,16 @@ extension FollowersListVC: UISearchResultsUpdating {
 extension FollowersListVC: UserInfoVCDelegate {
     
     func didRequestFollowers(with username: String) {
-        self.username = username
-        title = username
-        self.page = 1
+        self.username   = username
+        title           = username
+        self.page       = 1
+        
         self.followers.removeAll()
         self.filteredFollowers.removeAll()
+        
         collectionView.scrollsToTop = true
         collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        
         if isSearching {
             navigationItem.searchController?.searchBar.text = ""
             navigationItem.searchController?.isActive = false

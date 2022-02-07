@@ -17,7 +17,6 @@ class SearchVC: UIViewController {
     var isUserNameEntered: Bool { return !userNameTextField.text!.isEmpty}
     var buttonConstraint: NSLayoutConstraint!
     var logoImageConstraint: NSLayoutConstraint!
-    let buttonBottomConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 30 : 50
     
     
     //MARK: - VC Lifecycle methods
@@ -40,6 +39,7 @@ class SearchVC: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
         self.userNameTextField.text = ""
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -81,8 +81,9 @@ class SearchVC: UIViewController {
     @objc func adjustForKeyboard(notification: Notification) {
         guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         
-        let keyboardScreenEndFrame = keyboardValue.cgRectValue
-        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        let keyboardScreenEndFrame          = keyboardValue.cgRectValue
+        let keyboardViewEndFrame            = view.convert(keyboardScreenEndFrame, from: view.window)
+        let buttonBottomConstant: CGFloat   = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 30 : 50
         
         if notification.name == UIResponder.keyboardWillHideNotification {
             self.buttonConstraint.constant = -50
@@ -96,15 +97,15 @@ class SearchVC: UIViewController {
     //MARK: - UI Configuration Methods
     private func configureLogoImageView() {
         view.addSubview(logoImageView)
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.image = AppImages.GHLogo
         
-        let logoImageTopConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 60 : 80
-        let logoImageWidthAndHeight: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 180 : 200
+        let logoImageTopConstant: CGFloat       = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 60 : 80
+        let logoImageWidthAndHeight: CGFloat    = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 180 : 200
         
-        logoImageConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: logoImageTopConstant)
-        logoImageConstraint.isActive = true
+        logoImageConstraint                     = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: logoImageTopConstant)
+        logoImageConstraint.isActive            = true
         
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: logoImageWidthAndHeight),

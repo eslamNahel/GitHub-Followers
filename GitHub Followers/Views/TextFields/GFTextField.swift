@@ -41,6 +41,7 @@ class GFTextField: UITextField {
         placeholder                 = "Enter a username"
         returnKeyType               = .go
         keyboardType                = .asciiCapable
+        
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
